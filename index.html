@@ -143,7 +143,7 @@
   .brand .beam{width:9px;height:9px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:beam 2.2s ease-in-out infinite;}
   @keyframes beam{0%,100%{opacity:.4;transform:scale(.85);}50%{opacity:1;transform:scale(1.15);}}
   @media (prefers-reduced-motion:reduce){.brand .beam{animation:none;}}
-  nav.menu{display:flex;align-items:center;gap:20px;}
+  nav.menu{display:flex;align-items:center;gap:17px;}
   nav.menu a{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);transition:color .16s;}
   nav.menu a:hover{color:var(--txt);}
   .avail{display:inline-flex;align-items:center;gap:.55em;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt);border:1px solid var(--line-2);border-radius:100px;padding:6px 13px;}
@@ -392,6 +392,35 @@
   .rec .who .n{font-family:var(--f-disp);font-weight:600;font-size:.98rem;}
   .rec .who .r{font-family:var(--f-mono);font-size:.6rem;color:var(--cyan);letter-spacing:.02em;margin-top:5px;line-height:1.55;}
 
+  /* ---------------- VOICE-OVER PLAYERS ---------------- */
+  .vo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(max-width:760px){.vo-grid{grid-template-columns:1fr;}}
+  .vo{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;transition:border-color .2s ease,background .2s;}
+  .vo:hover{border-color:var(--line-2);}
+  .vo-play{flex:none;width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;background:var(--grad);color:#08131b;display:flex;align-items:center;justify-content:center;transition:transform .15s ease,box-shadow .2s ease;}
+  .vo-play:hover{transform:scale(1.06);box-shadow:0 8px 24px -8px rgba(55,230,206,.5);}
+  .vo-play svg{width:17px;height:17px;display:block;}
+  .vo .ic-pause{display:none;}
+  .vo.playing .ic-play{display:none;}
+  .vo.playing .ic-pause{display:block;}
+  .vo-body{flex:1;min-width:0;}
+  .vo-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:10px;}
+  .vo-title{font-family:var(--f-disp);font-weight:600;font-size:1rem;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .vo-tag{flex:none;font-family:var(--f-mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(55,230,206,.32);border-radius:100px;padding:3px 8px;}
+  .vo-bar{height:6px;border-radius:100px;background:var(--line-2);cursor:pointer;position:relative;overflow:hidden;}
+  .vo-prog{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--grad);border-radius:100px;}
+  .vo-meta{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--f-mono);font-size:.62rem;color:var(--faint);letter-spacing:.03em;}
+  .vo-eq{flex:none;display:flex;align-items:flex-end;gap:3px;height:26px;width:32px;opacity:.45;}
+  .vo-eq span{flex:1;background:var(--grad);border-radius:2px;height:22%;}
+  .vo.playing .vo-eq{opacity:1;}
+  .vo.playing .vo-eq span{animation:voeq .9s ease-in-out infinite;}
+  .vo.playing .vo-eq span:nth-child(2){animation-delay:-.3s;}
+  .vo.playing .vo-eq span:nth-child(3){animation-delay:-.6s;}
+  .vo.playing .vo-eq span:nth-child(4){animation-delay:-.15s;}
+  .vo.playing .vo-eq span:nth-child(5){animation-delay:-.45s;}
+  @keyframes voeq{0%,100%{height:18%}50%{height:100%}}
+  @media (prefers-reduced-motion:reduce){.vo.playing .vo-eq span{animation:none;height:60%;}}
+
   .reveal.in{opacity:1;transform:none;}
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
@@ -417,6 +446,7 @@
       <a href="#b2c">B2C</a>
       <a href="#skills">Skills</a>
       <a href="#press">Press</a>
+      <a href="#voice">Voice</a>
       <a href="#certs">Certs</a>
       <a href="#recs">Praise</a>
       <a href="#contact">Contact</a>
@@ -676,6 +706,74 @@
   </div>
 </div></section>
 
+<!-- VOICE -->
+<section class="blk" id="voice"><div class="wrap">
+  <div class="sec-head reveal">
+    <div><span class="kick">Voice-over &amp; audio</span><h2>Words, out loud.</h2></div>
+    <span class="idx">04 spots</span>
+  </div>
+  <p class="about-text reveal" style="margin:0 0 30px;"><span style="color:var(--dim);font-size:1.01rem;line-height:1.62;">A selection of radio spots and brand promos I've voiced — from national brands to station imaging. Press play to listen.</span></p>
+  <div class="vo-grid reveal">
+
+    <div class="vo">
+      <button class="vo-play" aria-label="Play sample">
+        <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13l11-6.5z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="vo-body">
+        <div class="vo-top"><span class="vo-title">Coors — Radio Promo</span><span class="vo-tag">Brand Spot</span></div>
+        <div class="vo-bar"><div class="vo-prog"></div></div>
+        <div class="vo-meta"><span class="vo-cur">0:00</span><span class="vo-dur">0:00</span></div>
+      </div>
+      <div class="vo-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <audio preload="metadata" src="CoorsPromo_041108-1.mp3"></audio>
+    </div>
+
+    <div class="vo">
+      <button class="vo-play" aria-label="Play sample">
+        <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13l11-6.5z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="vo-body">
+        <div class="vo-top"><span class="vo-title">Xtreme Radio 107.5 — :60 Spot</span><span class="vo-tag">Radio Imaging</span></div>
+        <div class="vo-bar"><div class="vo-prog"></div></div>
+        <div class="vo-meta"><span class="vo-cur">0:00</span><span class="vo-dur">0:00</span></div>
+      </div>
+      <div class="vo-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <audio preload="metadata" src="FFHB60_Arev_KXTE_converted.mp3"></audio>
+    </div>
+
+    <div class="vo">
+      <button class="vo-play" aria-label="Play sample">
+        <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13l11-6.5z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="vo-body">
+        <div class="vo-top"><span class="vo-title">Xtreme Radio — Christmas Promo</span><span class="vo-tag">Holiday Imaging</span></div>
+        <div class="vo-bar"><div class="vo-prog"></div></div>
+        <div class="vo-meta"><span class="vo-cur">0:00</span><span class="vo-dur">0:00</span></div>
+      </div>
+      <div class="vo-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <audio preload="metadata" src="Xtreme_X-mas.mp3"></audio>
+    </div>
+
+    <div class="vo">
+      <button class="vo-play" aria-label="Play sample">
+        <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5.5v13l11-6.5z"/></svg>
+        <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <div class="vo-body">
+        <div class="vo-top"><span class="vo-title">Hannah Montana — Event Spot</span><span class="vo-tag">Event Promo</span></div>
+        <div class="vo-bar"><div class="vo-prog"></div></div>
+        <div class="vo-meta"><span class="vo-cur">0:00</span><span class="vo-dur">0:00</span></div>
+      </div>
+      <div class="vo-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+      <audio preload="metadata" src="hannah_montana_spot_converted.mp3"></audio>
+    </div>
+
+  </div>
+</div></section>
+
 <!-- RESULTS -->
 <section class="blk" id="results"><div class="wrap">
   <div class="sec-head reveal">
@@ -863,6 +961,26 @@
         document.documentElement.setAttribute('data-theme',e.matches?'light':'dark');};
       if(mq.addEventListener)mq.addEventListener('change',onChange);else if(mq.addListener)mq.addListener(onChange);
     }
+  })();
+
+  // voice-over players
+  (function(){
+    var players=[].slice.call(document.querySelectorAll('.vo'));
+    function fmt(s){s=Math.max(0,Math.floor(s||0));var m=Math.floor(s/60),ss=s%60;return m+':'+(ss<10?'0':'')+ss;}
+    players.forEach(function(vo){
+      var audio=vo.querySelector('audio'),btn=vo.querySelector('.vo-play'),bar=vo.querySelector('.vo-bar'),prog=vo.querySelector('.vo-prog'),cur=vo.querySelector('.vo-cur'),dur=vo.querySelector('.vo-dur');
+      function setDur(){if(audio.duration&&isFinite(audio.duration))dur.textContent=fmt(audio.duration);}
+      audio.addEventListener('loadedmetadata',setDur); if(audio.readyState>=1)setDur();
+      btn.addEventListener('click',function(){
+        if(audio.paused){players.forEach(function(o){if(o!==vo)o.querySelector('audio').pause();});audio.play();}
+        else audio.pause();
+      });
+      audio.addEventListener('play',function(){vo.classList.add('playing');btn.setAttribute('aria-label','Pause sample');});
+      audio.addEventListener('pause',function(){vo.classList.remove('playing');btn.setAttribute('aria-label','Play sample');});
+      audio.addEventListener('ended',function(){vo.classList.remove('playing');prog.style.width='0%';cur.textContent='0:00';});
+      audio.addEventListener('timeupdate',function(){var p=audio.duration?audio.currentTime/audio.duration*100:0;prog.style.width=p+'%';cur.textContent=fmt(audio.currentTime);});
+      bar.addEventListener('click',function(e){var r=bar.getBoundingClientRect();var ratio=(e.clientX-r.left)/r.width;if(audio.duration)audio.currentTime=Math.max(0,Math.min(1,ratio))*audio.duration;});
+    });
   })();
 
   // mobile menu
